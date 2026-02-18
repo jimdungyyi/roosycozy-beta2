@@ -74,35 +74,80 @@
             <div class="check-circle">✔</div>
         </div>
 
-        <button id="btn-next-1" class="btn-next" onclick="nextStep(2)">다음 미션으로 이동 →</button>
+        <button id="btn-next-1" class="btn-next" onclick="nextStep(2)" disabled>
+            다음 미션으로 이동 →
+        </button>
     </div>
 
 
     <div id="step-2" class="mission-card">
         <div class="step-badge">STEP 02</div>
-        <h2 class="mission-title">기록의 방패 체험하기</h2>
-        <p class="mission-desc">샘플 데이터를 확인해 보세요.</p>
         
-        <div class="guide-box">
-            <p>프로그램 상단의 '조회' 버튼을 눌러보세요.</p>
-        </div>
+        <h2 class="mission-title">이제 직접 남겨봅시다</h2>
+        <p class="mission-desc">
+            설치가 무사히 완료되었군요!<br>
+            이제 <b>3초 만에 기록이 끝나는 경험</b>을 해보세요.
+        </p>
+        
+        <button class="btn-action" onclick="nextStep(3)" style="margin-top: 30px;">
+            🚀 기록 시작하기
+        </button>
 
-        <div id="mission-box-2" class="check-mission-box" onclick="toggleCheck(2)">
-            <div class="mission-info">
-                <strong>🔍 조회가 잘 되나요?</strong>
-                <div style="font-size:0.85rem; color:#888;">확인 후 클릭하세요.</div>
-            </div>
-            <div class="check-circle">✔</div>
-        </div>
-
-        <button id="btn-next-2" class="btn-next" onclick="nextStep(3)">다음 미션으로 이동 →</button>
+        <p style="margin-top: 20px; font-size: 0.9rem; color: #999;">
+            위 버튼을 누르면 다음 미션으로 넘어갑니다.
+        </p>
     </div>
 
     <div id="step-3" class="mission-card">
         <div class="step-badge">STEP 03</div>
         <h2 class="mission-title">직접 기록해보기</h2>
-        <p class="mission-desc">3초 만에 기록을 남겨보세요.</p>
-        <button class="btn-next active" onclick="nextStep(4)">다음 미션으로 이동 →</button>
+        <p class="mission-desc" style="margin-bottom: 30px;">
+            가장 기본이 되는 기능입니다.<br>
+            화면을 보고 직접 따라 해보세요.
+        </p>
+
+        <div id="part-3-1">
+            <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #444; font-weight: 700;">
+                1. 입력 후 저장하기
+            </h3>
+            
+            <div style="margin-bottom: 20px; border-radius: 12px; overflow: hidden; border: 1px solid #eee;">
+                <img src="메모하기1.png" alt="입력 화면 예시" style="width: 100%; display: block;">
+            </div>
+
+            <div id="mission-box-3-1" class="check-mission-box" onclick="togglePart(3, 1)">
+                <div class="mission-info">
+                    <strong>⌨️ 입력을 마치고 저장했나요?</strong>
+                    <div style="font-size:0.85rem; color:#888;">저장했다면 클릭해주세요.</div>
+                </div>
+                <div class="check-circle">✔</div>
+            </div>
+        </div>
+
+        <div id="part-3-2" style="display: none; border-top: 1px solid #eee; padding-top: 30px; margin-top: 30px;">
+            <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #444; font-weight: 700;">
+                2. 내 메모 확인하기
+            </h3>
+            <p style="color: #666; margin-bottom: 15px; font-size: 0.9rem;">
+                <span style="color:#00C853; font-weight:700;">빨간색 테두리로 표시된 부분</span>을 확인하세요!
+            </p>
+
+            <div style="margin-bottom: 20px; border-radius: 12px; overflow: hidden; border: 1px solid #eee;">
+                <img src="메모하기2.png" alt="결과 확인" style="width: 100%; display: block;">
+            </div>
+
+            <div id="mission-box-3-2" class="check-mission-box" onclick="togglePart(3, 2)">
+                <div class="mission-info">
+                    <strong>👀 리스트에 추가된 걸 확인했나요?</strong>
+                    <div style="font-size:0.85rem; color:#888;">확인했다면 클릭해주세요.</div>
+                </div>
+                <div class="check-circle">✔</div>
+            </div>
+
+            <button id="btn-next-3" class="btn-next" onclick="nextStep(4)" style="display: none; margin-top: 20px;">
+                다음 미션(AI 메모)으로 이동 →
+            </button>
+        </div>
     </div>
 
     <div id="step-4" class="mission-card">
@@ -179,8 +224,37 @@
                 btn.disabled = true;
             }
         }
+
+        // [추가] 파트별 토글 함수 (순차적으로 보여주기)
+        function togglePart(stepNum, partNum) {
+            const box = document.getElementById(`mission-box-${stepNum}-${partNum}`);
+            box.classList.toggle('checked');
+            
+            // 체크되었을 때 동작
+            if(box.classList.contains('checked')) {
+                // 1번 파트 체크 시 -> 2번 파트 보여주기
+                if(partNum === 1) {
+                    const nextPart = document.getElementById(`part-${stepNum}-2`);
+                    if(nextPart) {
+                        nextPart.style.display = 'block';
+                        // 부드럽게 스크롤 내리기
+                        nextPart.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+                // 2번 파트 체크 시 -> 다음 단계 버튼 보여주기
+                else if(partNum === 2) {
+                    const nextBtn = document.getElementById(`btn-next-${stepNum}`);
+                    if(nextBtn) {
+                        nextBtn.style.display = 'block';
+                        nextBtn.classList.add('active');
+                        nextBtn.disabled = false;
+                        nextBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            }
+        }
+        
     </script>
 
 </body>
-
 </html>
