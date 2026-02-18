@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoosyCozy 2nd Beta Mission</title>
+    <link rel="stylesheet" href="beta.css">
+</head>
+<body>
+
+    <header class="beta-header">
+        <div class="header-logo">ROOSYCOZY BETA-TESTER</div>
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar" style="width: 20%;"></div>
+        </div>
+    </header>
+
+    <div id="step-1" class="mission-card active">
+        <div class="step-badge">STEP 01</div>
+        
+        <h2 class="mission-title">실행까지 가는 길</h2>
+        <p class="mission-desc">
+            이탈 없이 한 번에 성공해 봅시다.<br>
+            아래 순서대로 진행해 주세요.
+        </p>
+
+        <a href="roosycozy-portable-exe.zip" download class="btn-action" onclick="trackDownload()">
+            📥 RoosyCozy 베타 다운로드
+        </a>
+
+        <div class="guide-box">
+            <div class="guide-row">
+                <span class="num-circle">1</span>
+                <div class="guide-text">
+                    <h4>파일 확인</h4>
+                    <p>파일은 <b>[내 PC > 다운로드]</b> 폴더에 저장됩니다.</p>
+                </div>
+            </div>
+            <div class="guide-row">
+                <span class="num-circle">2</span>
+                <div class="guide-text">
+                    <h4>압축 풀고 실행</h4>
+                    <p>반드시 <b>압축을 푼 뒤 폴더 안에서</b> 실행해 주세요.</p>
+                </div>
+            </div>
+            <div class="guide-row">
+                <span class="num-circle">3</span>
+                <div class="guide-text">
+                    <h4>경고창 무시 (중요!)</h4>
+                    <p>'서명되지 않은 앱' 경고는 정상이니 <b>[추가 정보] -> [실행]</b>을 눌러주세요.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-area">
+            <h4 class="warning-header">📑 윈도우에서 'PC 보호' 창이 떴나요?</h4>
+            <div class="warning-img-flex">
+                <div class="w-img-item">
+                    <img src="warning_win_1.png" alt="PC 보호 경고창">
+                    <span class="w-caption">1단계: 추가 정보 클릭</span>
+                </div>
+                <div class="w-img-item">
+                    <img src="warning_win_2.png" alt="실행 버튼 화면">
+                    <span class="w-caption">2단계: 실행 클릭</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="mission-box-1" class="check-mission-box" onclick="toggleCheck(1)">
+            <div class="mission-info">
+                <strong>🖥️ 앱 메인 화면이 떴나요?</strong>
+                <div style="font-size:0.85rem; color:#888;">화면이 보이면 여기를 클릭해 주세요.</div>
+            </div>
+            <div class="check-circle">✔</div>
+        </div>
+
+        <button id="btn-next-1" class="btn-next" onclick="nextStep(2)">다음 미션으로 이동 →</button>
+    </div>
+
+
+    <div id="step-2" class="mission-card">
+        <div class="step-badge">STEP 02</div>
+        <h2 class="mission-title">기록의 방패 체험하기</h2>
+        <p class="mission-desc">샘플 데이터를 확인해 보세요.</p>
+        
+        <div class="guide-box">
+            <p>프로그램 상단의 '조회' 버튼을 눌러보세요.</p>
+        </div>
+
+        <div id="mission-box-2" class="check-mission-box" onclick="toggleCheck(2)">
+            <div class="mission-info">
+                <strong>🔍 조회가 잘 되나요?</strong>
+                <div style="font-size:0.85rem; color:#888;">확인 후 클릭하세요.</div>
+            </div>
+            <div class="check-circle">✔</div>
+        </div>
+
+        <button id="btn-next-2" class="btn-next" onclick="nextStep(3)">다음 미션으로 이동 →</button>
+    </div>
+
+    <div id="step-3" class="mission-card">
+        <div class="step-badge">STEP 03</div>
+        <h2 class="mission-title">직접 기록해보기</h2>
+        <p class="mission-desc">3초 만에 기록을 남겨보세요.</p>
+        <button class="btn-next active" onclick="nextStep(4)">다음 미션으로 이동 →</button>
+    </div>
+
+    <div id="step-4" class="mission-card">
+        <div class="step-badge">STEP 04</div>
+        <h2 class="mission-title">AI 스마트 메모</h2>
+        <button class="btn-next active" onclick="nextStep(5)">다음 미션으로 이동 →</button>
+    </div>
+
+    <div id="step-5" class="mission-card">
+        <div class="step-badge">STEP 05</div>
+        <h2 class="mission-title">증빙자료 출력</h2>
+        <button class="btn-next active" onclick="alert('모든 미션 완료! 고생하셨습니다.')">최종 완료</button>
+    </div>
+
+
+    <script>
+        // 1. 구글 스프레드시트 추적 URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzNmbMH6VuZnWBwHPOEQyObYYDl7BmFVh70QpT_3pf25P5rV6xssEA10qDuVeis1B2c1g/exec';
+
+        // 2. 다운로드 카운팅 함수
+        function trackDownload() {
+            console.log("다운로드 기록 중...");
+            // no-cors 모드로 전송 (사용자에게는 아무 영향 없이 백그라운드에서 전송됨)
+            fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors'})
+            .then(() => console.log("기록 완료"))
+            .catch(err => console.error("기록 실패", err));
+        }
+
+        // 3. 다음 단계 이동 함수
+        function nextStep(nextNum) {
+            document.querySelector('.mission-card.active').classList.remove('active');
+            document.getElementById('step-' + nextNum).classList.add('active');
+            
+            // 진행률 업데이트
+            let progress = nextNum * 20; 
+            document.getElementById('progress-bar').style.width = progress + '%';
+            window.scrollTo(0, 0);
+        }
+
+        // 4. 체크박스 토글 함수
+        function toggleCheck(stepNum) {
+            const box = document.getElementById('mission-box-' + stepNum);
+            const btn = document.getElementById('btn-next-' + stepNum);
+            
+            box.classList.toggle('checked');
+
+            if(box.classList.contains('checked')) {
+                btn.classList.add('active');
+                btn.disabled = false;
+            } else {
+                btn.classList.remove('active');
+                btn.disabled = true;
+            }
+        }
+    </script>
+
+</body>
+</html>
