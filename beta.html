@@ -119,23 +119,41 @@
 
 
     <script>
-        // 1. 구글 스프레드시트 추적 URL
+        // 1. 구글 스프레드시트 URL (선생님이 주신 최신 URL)
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlGdBouqHmaHJzY1qP9VNaB_G0CJomirBvniezApbDPk-9HdNajTmeiqVvG78veTzw/exec';
 
-        // 2. 다운로드 카운팅 함수 (GET 방식으로 변경)
+        // 2. 사용자 ID 생성 함수 (예: user_ligzor39...)
+        function getUserId() {
+            // 브라우저에 저장된 ID가 있는지 확인
+            let userId = localStorage.getItem('roosy_user_id');
+            if (!userId) {
+                // 없으면 랜덤 생성 (랜덤 문자열 + 시간 조합)
+                const randomStr = Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 6);
+                userId = 'user_' + randomStr;
+                // 브라우저에 저장 (다음에 와도 이 ID 사용)
+                localStorage.setItem('roosy_user_id', userId);
+            }
+            return userId;
+        }
+
+        // 3. 다운로드 카운팅 함수 (데이터 전송)
         function trackDownload() {
             console.log("다운로드 기록 중...");
             
-            // URL 뒤에 ?t=시간 을 붙여서 매번 새로운 요청으로 인식하게 함 (캐시 방지)
-            const timestamp = new Date().getTime();
-            const finalUrl = SCRIPT_URL + "?t=" + timestamp;
+            const userId = getUserId();       // A열: ID
+            const action = "DOWNLOAD_ACTION"; // B열: ACTION
+            const version = "beta_v1";        // D열: VERSION
 
+            // 파라미터 조립 (?id=...&action=...&version=...&t=...)
+            const finalUrl = `${SCRIPT_URL}?id=${userId}&action=${action}&version=${version}&t=${new Date().getTime()}`;
+
+            // 전송 (GET 방식)
             fetch(finalUrl, { method: 'GET', mode: 'no-cors' })
             .then(() => console.log("기록 완료"))
             .catch(err => console.error("기록 실패", err));
         }
 
-        // 3. 다음 단계 이동 함수
+        // 4. 다음 단계 이동 함수
         function nextStep(nextNum) {
             document.querySelector('.mission-card.active').classList.remove('active');
             document.getElementById('step-' + nextNum).classList.add('active');
@@ -146,7 +164,7 @@
             window.scrollTo(0, 0);
         }
 
-        // 4. 체크박스 토글 함수
+        // 5. 체크박스 토글 함수
         function toggleCheck(stepNum) {
             const box = document.getElementById('mission-box-' + stepNum);
             const btn = document.getElementById('btn-next-' + stepNum);
