@@ -120,13 +120,17 @@
 
     <script>
         // 1. 구글 스프레드시트 추적 URL
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzNmbMH6VuZnWBwHPOEQyObYYDl7BmFVh70QpT_3pf25P5rV6xssEA10qDuVeis1B2c1g/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlGdBouqHmaHJzY1qP9VNaB_G0CJomirBvniezApbDPk-9HdNajTmeiqVvG78veTzw/exec';
 
-        // 2. 다운로드 카운팅 함수
+        // 2. 다운로드 카운팅 함수 (GET 방식으로 변경)
         function trackDownload() {
             console.log("다운로드 기록 중...");
-            // no-cors 모드로 전송 (사용자에게는 아무 영향 없이 백그라운드에서 전송됨)
-            fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors'})
+            
+            // URL 뒤에 ?t=시간 을 붙여서 매번 새로운 요청으로 인식하게 함 (캐시 방지)
+            const timestamp = new Date().getTime();
+            const finalUrl = SCRIPT_URL + "?t=" + timestamp;
+
+            fetch(finalUrl, { method: 'GET', mode: 'no-cors' })
             .then(() => console.log("기록 완료"))
             .catch(err => console.error("기록 실패", err));
         }
