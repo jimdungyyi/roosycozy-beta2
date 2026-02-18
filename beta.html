@@ -142,7 +142,7 @@
             
             const userId = getUserId();       // A열: ID
             const action = "DOWNLOAD_ACTION"; // B열: ACTION
-            const version = "beta_v1";        // D열: VERSION
+            const version = "beta_v2";        // D열: VERSION
 
             // 파라미터 조립 (?id=...&action=...&version=...&t=...)
             const finalUrl = `${SCRIPT_URL}?id=${userId}&action=${action}&version=${version}&t=${new Date().getTime()}`;
@@ -182,4 +182,5 @@
     </script>
 
 </body>
+
 </html>
