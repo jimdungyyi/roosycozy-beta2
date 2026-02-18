@@ -1,0 +1,84 @@
+/* 기본 초기화 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fbf9; color: #333; }
+
+.hero-final {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.container { max-width: 800px; width: 100%; }
+
+/* 상단 배지 */
+.badge-final {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid #00E676;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #00C853;
+    box-shadow: 0 4px 15px rgba(0, 230, 118, 0.1);
+    margin-bottom: 40px;
+}
+
+/* 타이틀 영역 */
+.sub-title { font-size: 1.5rem; font-weight: 600; color: #666; margin-bottom: 10px; }
+.main-title {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    color: #00E676;
+    text-shadow: 0 0 20px rgba(0, 230, 118, 0.3);
+    margin-bottom: 50px;
+    letter-spacing: -0.02em;
+}
+
+/* 지표 대시보드 */
+.stats-dashboard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 230, 118, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 200, 83, 0.05);
+    margin-bottom: 50px;
+}
+.stat-item { flex: 1; }
+.stat-item .val { display: block; font-size: 2.5rem; font-weight: 900; color: #00C853; line-height: 1; }
+.stat-item .lbl { font-size: 0.9rem; color: #999; font-weight: 700; margin-top: 8px; display: block; }
+.stat-item.highlight .val { color: #00E676; text-shadow: 0 0 10px rgba(0, 230, 118, 0.2); }
+
+.divider { width: 1px; height: 50px; background: #eee; }
+
+/* 하단 영역 */
+.desc-text { font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 40px; }
+.btn-final-green {
+    display: inline-block;
+    padding: 20px 60px;
+    background: #00E676;
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 800;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0, 230, 118, 0.4);
+    transition: 0.3s ease;
+}
+.btn-final-green:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0, 200, 83, 0.5); }
+.note { margin-top: 20px; font-size: 0.85rem; color: #aaa; }
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .stats-dashboard { flex-direction: column; gap: 30px; }
+    .divider { width: 50%; height: 1px; }
+    .main-title { font-size: 2.2rem; }
+}
