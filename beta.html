@@ -17,7 +17,6 @@
 
     <div id="step-1" class="mission-card active">
         <div class="step-badge">STEP 01</div>
-        
         <h2 class="mission-title">실행까지 가는 길</h2>
         <p class="mission-desc">
             이탈 없이 한 번에 성공해 봅시다.<br>
@@ -29,40 +28,16 @@
         </a>
 
         <div class="guide-box">
-            <div class="guide-row">
-                <span class="num-circle">1</span>
-                <div class="guide-text">
-                    <h4>파일 확인</h4>
-                    <p>파일은 <b>[내 PC > 다운로드]</b> 폴더에 저장됩니다.</p>
-                </div>
-            </div>
-            <div class="guide-row">
-                <span class="num-circle">2</span>
-                <div class="guide-text">
-                    <h4>압축 풀고 실행</h4>
-                    <p>반드시 <b>압축을 푼 뒤 폴더 안에서</b> 실행해 주세요.</p>
-                </div>
-            </div>
-            <div class="guide-row">
-                <span class="num-circle">3</span>
-                <div class="guide-text">
-                    <h4>경고창 무시 (중요!)</h4>
-                    <p>'서명되지 않은 앱' 경고는 정상이니 <b>[추가 정보] -> [실행]</b>을 눌러주세요.</p>
-                </div>
-            </div>
+            <div class="guide-row"><span class="num-circle">1</span><div class="guide-text"><h4>파일 확인</h4><p>파일은 <b>[내 PC > 다운로드]</b> 폴더에 저장됩니다.</p></div></div>
+            <div class="guide-row"><span class="num-circle">2</span><div class="guide-text"><h4>압축 풀고 실행</h4><p>반드시 <b>압축을 푼 뒤 폴더 안에서</b> 실행해 주세요.</p></div></div>
+            <div class="guide-row"><span class="num-circle">3</span><div class="guide-text"><h4>경고창 무시 (중요!)</h4><p>'서명되지 않은 앱' 경고는 정상이니 <b>[추가 정보] -> [실행]</b>을 눌러주세요.</p></div></div>
         </div>
 
         <div class="warning-area">
             <h4 class="warning-header">📑 윈도우에서 'PC 보호' 창이 떴나요?</h4>
             <div class="warning-img-flex">
-                <div class="w-img-item">
-                    <img src="warning_win_1.png" alt="PC 보호 경고창">
-                    <span class="w-caption">1단계: 추가 정보 클릭</span>
-                </div>
-                <div class="w-img-item">
-                    <img src="warning_win_2.png" alt="실행 버튼 화면">
-                    <span class="w-caption">2단계: 실행 클릭</span>
-                </div>
+                <div class="w-img-item"><img src="warning_win_1.png" alt="PC 보호 경고창"><span class="w-caption">1단계: 추가 정보 클릭</span></div>
+                <div class="w-img-item"><img src="warning_win_2.png" alt="실행 버튼 화면"><span class="w-caption">2단계: 실행 클릭</span></div>
             </div>
         </div>
 
@@ -82,40 +57,36 @@
 
     <div id="step-2" class="mission-card">
         <div class="step-badge">STEP 02</div>
-        
         <h2 class="mission-title">이제 직접 남겨봅시다</h2>
         <p class="mission-desc">
             설치가 무사히 완료되었군요!<br>
             이제 <b>3초 만에 기록이 끝나는 경험</b>을 해보세요.
         </p>
         
-        <button class="btn-action" onclick="nextStep(3)" style="margin-top: 30px;">
+        <button class="btn-action" onclick="showStep2Detail()" style="margin-top: 30px;">
             🚀 기록 시작하기
         </button>
 
         <p style="margin-top: 20px; font-size: 0.9rem; color: #999;">
-            위 버튼을 누르면 다음 미션으로 넘어갑니다.
+            위 버튼을 누르면 상세 가이드가 나타납니다.
         </p>
     </div>
 
-    <div id="step-3" class="mission-card">
-        <div class="step-badge">STEP 03</div>
+
+    <div id="step-2-detail" class="mission-card">
+        <div class="step-badge">STEP 02</div> 
         <h2 class="mission-title">직접 기록해보기</h2>
         <p class="mission-desc" style="margin-bottom: 30px;">
             가장 기본이 되는 기능입니다.<br>
             화면을 보고 직접 따라 해보세요.
         </p>
 
-        <div id="part-3-1">
-            <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #444; font-weight: 700;">
-                1. 입력 후 저장하기
-            </h3>
-            
+        <div id="part-2-1">
+            <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #444; font-weight: 700;">1. 입력 후 저장하기</h3>
             <div style="margin-bottom: 20px; border-radius: 12px; overflow: hidden; border: 1px solid #eee;">
                 <img src="메모하기1.png" alt="입력 화면 예시" style="width: 100%; display: block;">
             </div>
-
-            <div id="mission-box-3-1" class="check-mission-box" onclick="togglePart(3, 1)">
+            <div id="mission-box-2-1" class="check-mission-box" onclick="togglePart(2, 1)">
                 <div class="mission-info">
                     <strong>⌨️ 입력을 마치고 저장했나요?</strong>
                     <div style="font-size:0.85rem; color:#888;">저장했다면 클릭해주세요.</div>
@@ -124,19 +95,12 @@
             </div>
         </div>
 
-        <div id="part-3-2" style="display: none; border-top: 1px solid #eee; padding-top: 30px; margin-top: 30px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #444; font-weight: 700;">
-                2. 내 메모 확인하기
-            </h3>
-            <p style="color: #666; margin-bottom: 15px; font-size: 0.9rem;">
-                <span style="color:#00C853; font-weight:700;">빨간색 테두리로 표시된 부분</span>을 확인하세요!
-            </p>
-
+        <div id="part-2-2" style="display: none; border-top: 1px solid #eee; padding-top: 30px; margin-top: 30px;">
+            <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #444; font-weight: 700;">2. 내 메모 확인하기</h3>
             <div style="margin-bottom: 20px; border-radius: 12px; overflow: hidden; border: 1px solid #eee;">
                 <img src="메모하기2.png" alt="결과 확인" style="width: 100%; display: block;">
             </div>
-
-            <div id="mission-box-3-2" class="check-mission-box" onclick="togglePart(3, 2)">
+            <div id="mission-box-2-2" class="check-mission-box" onclick="togglePart(2, 2)">
                 <div class="mission-info">
                     <strong>👀 리스트에 추가된 걸 확인했나요?</strong>
                     <div style="font-size:0.85rem; color:#888;">확인했다면 클릭해주세요.</div>
@@ -144,72 +108,65 @@
                 <div class="check-circle">✔</div>
             </div>
 
-            <button id="btn-next-3" class="btn-next" onclick="nextStep(4)" style="display: none; margin-top: 20px;">
+            <button id="btn-next-2" class="btn-next" onclick="nextStep(3)" style="display: none; margin-top: 20px;">
                 다음 미션(AI 메모)으로 이동 →
             </button>
         </div>
     </div>
 
-    <div id="step-4" class="mission-card">
-        <div class="step-badge">STEP 04</div>
+
+    <div id="step-3" class="mission-card">
+        <div class="step-badge">STEP 03</div>
         <h2 class="mission-title">AI 스마트 메모</h2>
-        <button class="btn-next active" onclick="nextStep(5)">다음 미션으로 이동 →</button>
+        <p class="mission-desc">다음 미션 내용이 들어갈 자리입니다.</p>
+        <button class="btn-next active" onclick="nextStep(4)">다음 미션으로 이동 →</button>
     </div>
 
-    <div id="step-5" class="mission-card">
-        <div class="step-badge">STEP 05</div>
+    <div id="step-4" class="mission-card">
+        <div class="step-badge">STEP 04</div>
         <h2 class="mission-title">증빙자료 출력</h2>
         <button class="btn-next active" onclick="alert('모든 미션 완료! 고생하셨습니다.')">최종 완료</button>
     </div>
 
 
     <script>
-        // 1. 구글 스프레드시트 URL (선생님이 주신 최신 URL)
+        // 1. 구글 스프레드시트 URL
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlGdBouqHmaHJzY1qP9VNaB_G0CJomirBvniezApbDPk-9HdNajTmeiqVvG78veTzw/exec';
 
-        // 2. 사용자 ID 생성 함수 (예: user_ligzor39...)
+        // 2. 사용자 ID 생성
         function getUserId() {
-            // 브라우저에 저장된 ID가 있는지 확인
             let userId = localStorage.getItem('roosy_user_id');
             if (!userId) {
-                // 없으면 랜덤 생성 (랜덤 문자열 + 시간 조합)
                 const randomStr = Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 6);
                 userId = 'user_' + randomStr;
-                // 브라우저에 저장 (다음에 와도 이 ID 사용)
                 localStorage.setItem('roosy_user_id', userId);
             }
             return userId;
         }
 
-        // 3. 다운로드 카운팅 함수 (데이터 전송)
+        // 3. 다운로드 카운팅
         function trackDownload() {
-            console.log("다운로드 기록 중...");
-            
-            const userId = getUserId();       // A열: ID
-            const action = "DOWNLOAD_ACTION"; // B열: ACTION
-            const version = "beta_v2";        // D열: VERSION
-
-            // 파라미터 조립 (?id=...&action=...&version=...&t=...)
+            const userId = getUserId();       
+            const action = "DOWNLOAD_ACTION"; 
+            const version = "beta_v2";        
             const finalUrl = `${SCRIPT_URL}?id=${userId}&action=${action}&version=${version}&t=${new Date().getTime()}`;
 
-            // 전송 (GET 방식)
             fetch(finalUrl, { method: 'GET', mode: 'no-cors' })
             .then(() => console.log("기록 완료"))
             .catch(err => console.error("기록 실패", err));
         }
 
-        // 4. 다음 단계 이동 함수
+        // 4. 다음 단계 이동
         function nextStep(nextNum) {
             document.querySelector('.mission-card.active').classList.remove('active');
             document.getElementById('step-' + nextNum).classList.add('active');
             
-            // 진행률 업데이트
             let progress = nextNum * 20; 
             document.getElementById('progress-bar').style.width = progress + '%';
             window.scrollTo(0, 0);
         }
 
-        // 5. 체크박스 토글 함수
+        // 5. 체크박스 토글 (STEP 1 용)
         function toggleCheck(stepNum) {
             const box = document.getElementById('mission-box-' + stepNum);
             const btn = document.getElementById('btn-next-' + stepNum);
@@ -225,23 +182,19 @@
             }
         }
 
-        // [추가] 파트별 토글 함수 (순차적으로 보여주기)
+        // 6. 파트별 토글 (STEP 2 상세 미션 용)
         function togglePart(stepNum, partNum) {
             const box = document.getElementById(`mission-box-${stepNum}-${partNum}`);
             box.classList.toggle('checked');
             
-            // 체크되었을 때 동작
             if(box.classList.contains('checked')) {
-                // 1번 파트 체크 시 -> 2번 파트 보여주기
                 if(partNum === 1) {
                     const nextPart = document.getElementById(`part-${stepNum}-2`);
                     if(nextPart) {
                         nextPart.style.display = 'block';
-                        // 부드럽게 스크롤 내리기
                         nextPart.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                 }
-                // 2번 파트 체크 시 -> 다음 단계 버튼 보여주기
                 else if(partNum === 2) {
                     const nextBtn = document.getElementById(`btn-next-${stepNum}`);
                     if(nextBtn) {
@@ -254,7 +207,14 @@
             }
         }
         
+        // 7. STEP 02 인트로 -> 상세 미션 전환
+        function showStep2Detail() {
+            document.getElementById('step-2').classList.remove('active'); // 버그 수정 포인트!
+            document.getElementById('step-2-detail').classList.add('active');
+    
+            document.getElementById('progress-bar').style.width = '40%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     </script>
-
 </body>
 </html>
