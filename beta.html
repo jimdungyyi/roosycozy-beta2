@@ -387,25 +387,6 @@
                 </button>
             </div>
         </div>
-        
-        <div id="step-final" class="mission-card" style="display: none; text-align: center; padding: 60px 40px;">
-            <div style="font-size: 5rem; margin-bottom: 20px;">🛡️</div>
-            <h2 style="font-size: 1.8rem; font-weight: 900; color: #00C853; margin-bottom: 15px;">완벽하게 클리어하셨습니다!</h2>
-        
-            <div style="background: #f8fbf9; border: 1px solid #00E676; border-radius: 15px; padding: 30px; margin-top: 30px; margin-bottom: 30px; text-align: center;">
-                <p style="color: #444; font-size: 1.05rem; line-height: 1.7; margin: 0;">
-                    로지코지 2차 베타 테스트의 모든 미션을 무사히 마치셨습니다.<br><br>
-                    현장에서 아이들을 지도하시느라 바쁘신 와중에도,<br>
-                    기꺼이 귀중한 시간을 내어 참여해 주셔서 진심으로 감사드립니다.<br><br>
-                    <b>선생님의 가장 든든하고 안전한 방패가 되겠습니다.</b>
-                </p>
-            </div>
-
-            <a href="index.html" style="color: #999; text-decoration: underline; font-size: 0.95rem; transition: 0.3s;" onmouseover="this.style.color='#666'" onmouseout="this.style.color='#999'">
-                처음 화면으로 돌아가기
-            </a>
-        </div>
-
     </div>
 
 
@@ -492,26 +473,6 @@
                 }
             }
         }
-
-        // 8. 최종 엔딩 화면 보여주기
-        function showFinalScreen() {
-            // 현재 활성화된 카드(STEP 4) 숨기기
-            document.querySelector('.mission-card.active').classList.remove('active');
-            
-            // 엔딩 카드 띄우기
-            const finalStep = document.getElementById('step-final');
-            finalStep.style.display = 'block';
-            
-            // CSS 애니메이션을 위해 아주 약간의 시차를 둠
-            setTimeout(() => {
-                finalStep.classList.add('active');
-            }, 10);
-            
-            // 프로그레스 바 100% 채우기
-            document.getElementById('progress-bar').style.width = '100%';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
         // 8. 예쁜 커스텀 팝업 띄우기
         function showCustomModal() {
             document.getElementById('final-modal-overlay').style.display = 'flex';
