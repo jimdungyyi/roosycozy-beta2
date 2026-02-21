@@ -149,6 +149,55 @@
                 </div>
                 <div class="check-circle">✔</div>
             </div>
+        </div>
+
+        <div id="part-2-3" style="display: none; border-top: 1px solid #eee; padding-top: 30px; margin-top: 30px;">
+            <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #444; font-weight: 700;">3. 📌 [추가 미션] 같은 방식으로 2개 더 남겨보기</h3>
+            <p style="color: #555; font-size: 0.95rem; margin-bottom: 20px;">
+                첫 번째 기록을 완료하셨습니다. 나중에 AI가 <b>주체가 다른 기록들을 어떻게 하나의 사건으로 묶어내는지</b> 확인하기 위해, 아래 두 가지 상황도 마저 입력해 보세요.<br>
+                <span style="font-size: 0.85rem; color: #888;">(※ 바로 다음 미션으로 넘어가도 무방합니다.)</span>
+            </p>
+
+            <div style="background: #fff8e1; border: 1px solid #ffca28; border-radius: 12px; padding: 20px; text-align: left; margin-bottom: 20px;">
+                <h4 style="margin: 0 0 10px 0; font-size: 1rem; color: #f57f17; font-weight: 800;">
+                    [메모 A: 사건 발단]
+                </h4>
+                <div style="background: #fff; border: 1px solid #ffe082; padding: 15px; border-radius: 8px; font-size: 0.95rem; color: #333;">
+                    <div style="margin-bottom: 8px;"><strong>👤 주체:</strong> 학생 ➔ <b>'학생1'</b> 선택</div>
+                    <div style="margin-bottom: 8px;"><strong>📍 장소:</strong> <b>'교실'</b> 선택</div>
+                    <div style="margin-bottom: 8px;"><strong>📁 보관:</strong> <b>'학급일지'</b> 선택</div>
+                    <div><strong>📝 내용 (복사하세요):</strong><br>
+                        <div style="margin-top: 5px; padding: 12px; background: #fafafa; border-radius: 6px; border: 1px solid #eee; font-family: 'Malgun Gothic', sans-serif; line-height: 1.5; color: #000;">
+                            2교시 수업 중 학생1이 수행평가 결과에 불만을 품고 큰 소리를 냄. 진정시킴.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #fff8e1; border: 1px solid #ffca28; border-radius: 12px; padding: 20px; text-align: left; margin-bottom: 20px;">
+                <h4 style="margin: 0 0 10px 0; font-size: 1rem; color: #f57f17; font-weight: 800;">
+                    [메모 B: 후속 조치]
+                </h4>
+                <div style="background: #fff; border: 1px solid #ffe082; padding: 15px; border-radius: 8px; font-size: 0.95rem; color: #333;">
+                    <div style="margin-bottom: 8px;"><strong>👤 주체:</strong> 관리자 ➔ <b>'교감'</b> 선택</div>
+                    <div style="margin-bottom: 8px;"><strong>📍 장소:</strong> <b>'교무실'</b> 선택</div>
+                    <div style="margin-bottom: 8px;"><strong>📁 보관:</strong> <b>'업무일지'</b> 선택</div>
+                    <div style="margin-bottom: 8px;"><strong>👥 관련자 추가:</strong> 학생 ➔ <b>'학생1'</b> 추가 <span style="font-size:0.8rem; color:#d32f2f; font-weight:bold;">(★가장 중요!)</span></div>
+                    <div><strong>📝 내용 (복사하세요):</strong><br>
+                        <div style="margin-top: 5px; padding: 12px; background: #fafafa; border-radius: 6px; border: 1px solid #eee; font-family: 'Malgun Gothic', sans-serif; line-height: 1.5; color: #000;">
+                            학생1 수행평가 관련 학부모 민원 제기 건 교감선생님께 보고드림.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mission-box-2-3" class="check-mission-box" onclick="togglePart(2, 3)">
+                <div class="mission-info">
+                    <strong>☑️ 추가 미션까지 모두 입력했나요?</strong>
+                    <div style="font-size:0.85rem; color:#888;">입력했다면 클릭해주세요. (건너뛰어도 무방합니다)</div>
+                </div>
+                <div class="check-circle">✔</div>
+            </div>
 
             <button id="btn-next-2" class="btn-next" onclick="nextStep(3)" style="display: none; margin-top: 20px;">
                 다음 미션(AI 스마트 메모)으로 이동 →
@@ -257,6 +306,29 @@
             document.getElementById('progress-bar').style.width = '40%';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // 6. 파트별 토글 (자동으로 다음 파트를 찾아 여는 스마트 버전)
+        function togglePart(stepNum, partNum) {
+            const box = document.getElementById(`mission-box-${stepNum}-${partNum}`);
+            box.classList.toggle('checked');
+            
+            if(box.classList.contains('checked')) {
+                const nextPart = document.getElementById(`part-${stepNum}-${partNum + 1}`);
+                if(nextPart) {
+                    nextPart.style.display = 'block';
+                    nextPart.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    const nextBtn = document.getElementById(`btn-next-${stepNum}`);
+                    if(nextBtn) {
+                        nextBtn.style.display = 'block';
+                        nextBtn.classList.add('active');
+                        nextBtn.disabled = false;
+                        nextBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            }
+        }
+        
     </script>
 </body>
 </html>
