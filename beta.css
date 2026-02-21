@@ -125,3 +125,31 @@ body {
 @media (max-width: 600px) {
     .warning-img-flex { flex-direction: column; }
 }
+
+/* =========================================
+   이미지 마우스 오버 줌 효과 (Hover Zoom) - 수정본
+   ========================================= */
+.zoom-container {
+    margin-bottom: 20px;
+    position: relative; /* 이미지가 위로 뜰 수 있게 기준점 설정 */
+    cursor: zoom-in;    /* 마우스를 올리면 돋보기 모양으로 변함 */
+}
+
+.zoom-container img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    background: #fff;
+    /* 크기와 그림자가 0.3초 동안 부드럽게 변하도록 설정 */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    z-index: 1; /* 평소에는 기본 층에 있음 */
+}
+
+/* 마우스를 올렸을 때의 마법! */
+.zoom-container:hover img {
+    transform: scale(1.9); /* 1.7배에서 1.9배로 더 크게! */
+    z-index: 999; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3); 
+}
