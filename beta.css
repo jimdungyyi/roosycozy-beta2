@@ -141,6 +141,9 @@ body {
     border-radius: 12px;
     border: 1px solid #eee;
     background: #fff;
+
+    transform-origin: center bottom; /* 확대의 기준점을 '중앙 하단'으로 고정 */
+
     /* 크기와 그림자가 0.3초 동안 부드럽게 변하도록 설정 */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     position: relative;
