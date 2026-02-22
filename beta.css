@@ -183,3 +183,58 @@ body {
     from { transform: translateY(30px); opacity: 0; } 
     to { transform: translateY(0); opacity: 1; } 
 }
+/* =========================================
+   코드 최적화를 위한 공통 클래스
+   ========================================= */
+
+/* 노란색 실전 연습/추가 미션 박스 */
+.practice-box {
+    background: #fff8e1;
+    border: 1px solid #ffca28;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+/* 박스 내부의 흰색 상세 내용 영역 */
+.inner-content-box {
+    background: #fff;
+    border: 1px solid #ffe082;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* 복사해서 사용할 텍스트 박스 */
+.copy-code-box {
+    margin-top: 5px;
+    padding: 12px;
+    background: #fafafa;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    font-family: 'Malgun Gothic', sans-serif;
+    line-height: 1.5;
+    color: #000;
+}
+
+/* 파란색 정답지 박스 */
+.answer-guide-box {
+    background: #e3f2fd;
+    border: 1px solid #90caf9;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+/* AI 마법 팁 박스 */
+.ai-magic-tip {
+    background: #f0f7ff;
+    border-left: 3px solid #1976d2;
+    padding: 6px 10px;
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: #444;
+}
